@@ -7,16 +7,16 @@ import static com.example.libraries.ConjugatorHelper.ShoeVerbType.*;
 /**
  * Created by Rahul on 3/8/2017.
  */
-public class PresenteYo {
-	// TODO: third-person for tu affirmative
+public class Presente {
+	public enum Subject {FIRST, THIRD}
 	private static final HashMap<String, String> irregulars;
 	private static final HashMap<String, ConjugatorHelper.ShoeVerbType> shoeVerbs;
 
-	public static String conjugate(String infinitive) {
+	public static String conjugate(String infinitive, Subject subject) {
 		String infinitiveBuilder = infinitive;
 
 		// If one of the extreme irregulars, take the conjugation from the map and return immediately
-		if (irregulars.containsKey(infinitive)) {
+		if (subject == Subject.FIRST && irregulars.containsKey(infinitive)) {
 			return irregulars.get(infinitive);
 		}
 
@@ -36,13 +36,16 @@ public class PresenteYo {
 		}
 
 		// Change ending of the verb
-		if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("cer") ||
-				ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("cir")) {
+		if (subject == Subject.FIRST &&
+				(ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("cer") ||
+				ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("cir"))) {
 			infinitiveBuilder = specialCerCir(infinitiveBuilder);
-		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("ger") ||
-				ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("gir")) {
+		} else if (subject == Subject.FIRST &&
+				(ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("ger") ||
+				ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("gir"))) {
 			infinitiveBuilder = specialGerGir(infinitiveBuilder);
-		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 4).equals("guir")) {
+		} else if (subject == Subject.FIRST &&
+				(ConjugatorHelper.getLastNumberOfLetters(infinitive, 4).equals("guir"))) {
 			infinitiveBuilder = specialGuir(infinitiveBuilder);
 		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("uir")) {
 			infinitiveBuilder = specialUir(infinitiveBuilder);
@@ -50,13 +53,16 @@ public class PresenteYo {
 				ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("uar")) {
 			infinitiveBuilder = specialIarUar(infinitiveBuilder);
 		}
-		// This isn't right, but it's more convinient for the mandato conjugations
-		else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("car")) {
-			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitive, "car", "quo");
-		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("gar")) {
-			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitive, "gar", "guo");
-		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("zar")) {
-			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitive, "zar", "co");
+		// This isn't right for present tense, but it's more convinient for the mandato conjugations
+		else if (subject == Subject.FIRST &&
+				(ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("car"))) {
+			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitiveBuilder, "car", "quo");
+		} else if (subject == Subject.FIRST &&
+				(ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("gar"))) {
+			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitiveBuilder, "gar", "guo");
+		} else if (subject == Subject.FIRST &&
+				(ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("zar"))) {
+			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitiveBuilder, "zar", "co");
 		}
 		else {
 			// For regular ending verbs
@@ -167,6 +173,7 @@ public class PresenteYo {
 		shoeVerbs.put("corregir", E_TO_I);
 		shoeVerbs.put("decir", E_TO_I);
 		shoeVerbs.put("despedir", E_TO_I);
+		shoeVerbs.put("elegir", E_TO_I);
 		shoeVerbs.put("reñir", E_TO_I);
 		shoeVerbs.put("freír", E_TO_I);
 		shoeVerbs.put("gemir", E_TO_I);

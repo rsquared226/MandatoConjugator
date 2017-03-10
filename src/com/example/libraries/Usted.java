@@ -13,7 +13,7 @@ public class Usted {
 		if (irregulars.containsKey(infinitive)) {
 			return irregulars.get(infinitive).getConjugation(type);
 		} else {
-			String builder = PresenteYo.conjugate(infinitive);
+			String builder = Presente.conjugate(infinitive, Presente.Subject.FIRST);
 
 			if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 2).equals("ar")) {
 				builder = ConjugatorHelper.replaceLastOccurrence(builder, "o", "e");
