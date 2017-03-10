@@ -11,10 +11,16 @@ import static com.example.libraries.ConjugatorHelper.replaceLastOccurrence;
  */
 public class Vosotros {
 	// Contains irregular negative mandatos (there are no irregular affirmative in vosotros)
-	static private HashMap<String, String> irregularMap;
+	private static final HashMap<String, String> irregularMap;
 
 	static {
-		initializeIrregularMap();
+		// Fill up irregulars
+		irregularMap = new HashMap<>();
+		irregularMap.put("ir", "vayáis");
+		irregularMap.put("ser", "seais");
+		irregularMap.put("saber", "sepáis");
+		irregularMap.put("estar", "estéis");
+		irregularMap.put("dar", "deis");
 	}
 
 	public static String conjugate(String infinitive, ConjugatorHelper.VerbType verbType) {
@@ -36,14 +42,5 @@ public class Vosotros {
 			// If it is irregular, return the conjugation from the irregular hashmap
 			return irregularMap.get(infinitive);
 		}
-	}
-
-	private static void initializeIrregularMap() {
-		irregularMap = new HashMap<>();
-		irregularMap.put("ir", "vayáis");
-		irregularMap.put("ser", "seais");
-		irregularMap.put("saber", "sepáis");
-		irregularMap.put("estar", "estéis");
-		irregularMap.put("dar", "deis");
 	}
 }
