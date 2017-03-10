@@ -215,4 +215,8 @@ public class Presente {
 			return ConjugatorHelper.replaceLastOccurrence(infinitive, "uar", "úo");
 		}
 	}
+
+	public static HashMap<String, ConjugatorHelper.ShoeVerbType> getShoeVerbsMap() {
+		return shoeVerbs;
+	}
 }
