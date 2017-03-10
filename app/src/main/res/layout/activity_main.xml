@@ -46,9 +46,9 @@
 		android:text="@string/conjugate"/>
 
 	<TextView
+		android:id="@+id/text_conj_verb"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="test"
 		android:textAlignment="center"
 		android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"/>
 

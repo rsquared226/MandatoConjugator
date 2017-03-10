@@ -5,6 +5,8 @@
 	<string name="negative">Negative</string>
 	<string name="conjugate">Conjugate</string>
 
+	<string name="input_error">Enter a valid infinitive</string>
+
 	<string-array name="subjects_array">
 		<item>Tú</item>
 		<item>Ud.</item>
