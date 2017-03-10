@@ -49,7 +49,16 @@ public class PresenteYo {
 		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("iar") ||
 				ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("uar")) {
 			infinitiveBuilder = specialIarUar(infinitiveBuilder);
-		} else {
+		}
+		// This isn't right, but it's more convinient for the mandato conjugations
+		else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("car")) {
+			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitive, "car", "quo");
+		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("gar")) {
+			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitive, "gar", "guo");
+		} else if (ConjugatorHelper.getLastNumberOfLetters(infinitive, 3).equals("zar")) {
+			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitive, "zar", "co");
+		}
+		else {
 			// For regular ending verbs
 			infinitiveBuilder = ConjugatorHelper.replaceLastOccurrence(infinitiveBuilder,
 					ConjugatorHelper.getLastNumberOfLetters(infinitiveBuilder, 2),
@@ -155,6 +164,7 @@ public class PresenteYo {
 		shoeVerbs.put("dormir", O_TO_UE);
 		shoeVerbs.put("morir", O_TO_UE);
 
+		shoeVerbs.put("corregir", E_TO_I);
 		shoeVerbs.put("decir", E_TO_I);
 		shoeVerbs.put("despedir", E_TO_I);
 		shoeVerbs.put("reñir", E_TO_I);
