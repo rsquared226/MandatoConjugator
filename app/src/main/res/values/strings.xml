@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Mandato Conjugator</string>
+
+	<string name="affirmative">Affirmative</string>
+	<string name="negative">Negative</string>
+	<string name="conjugate">Conjugate</string>
+
+	<string-array name="subjects_array">
+		<item>Tú</item>
+		<item>Ud.</item>
+		<item>Uds.</item>
+		<item>Nosotros</item>
+		<item>Vosotros</item>
+	</string-array>
 </resources>
